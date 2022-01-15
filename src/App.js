@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
+import { Text, Container } from '@chakra-ui/react';
+import {
+	Routes,
+	Route,
+	Outlet,
+	Link,
+	useNavigate,
+	useParams,
+	useLocation
+} from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import FirebaseContextProvider from './context/FirebaseContext';
+import { useFirebase } from './context/FirebaseContext';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<FirebaseContextProvider>
+			<Routes>
+				<Route
+					path="/home"
+					element={
+						<ProtectedRoute>
+							<HomePage />
+						</ProtectedRoute>
+					}
+				/>
+				<Route path="/" element={<LoginPage />} />
+				<Route path="/signup" element={<RegisterPage />} />
+				<Route path="*" element={<NotFoundPage />} />
+			</Routes>
+		</FirebaseContextProvider>
+	);
+}
+
+function ProtectedRoute({ children }) {
+	const { isAuth } = useFirebase();
+	let navigate = useNavigate();
+
+	useEffect(() => {
+		if (!isAuth) {
+			navigate('/');
+		}
+	}, []);
+
+	return children; // children are every component placed under this ProtectedRoute
 }
 
 export default App;
