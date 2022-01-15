@@ -16,7 +16,8 @@ import {
 	InputGroup,
 	HStack,
 	InputRightElement,
-	Container
+	Container,
+	useColorModeValue
 } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import AuthHeading from '../components/AuthHeading';
@@ -37,62 +38,71 @@ function LoginPage() {
 	};
 
 	return (
-		<chakra.form onSubmit={handleLogIn}>
+		<>
 			<Navbar />
-
-			<AuthHeading>
-				<Stack spacing={4}>
-					<FormControl id="email">
-						<FormLabel>Email address</FormLabel>
-						<Input
-							onChange={(e) => setEmail(e.target.value)}
-							name="email"
-							type="email"
-							autoComplete="email"
-							required
-						/>
-					</FormControl>
-					<FormControl id="password">
-						<FormLabel>Password</FormLabel>
-						<InputGroup>
-							<Input
-								onChange={(e) => setPassword(e.target.value)}
-								type={showPassword ? 'text' : 'password'}
-								autoComplete="current-password"
-								required
-							/>
-							<InputRightElement h={'full'}>
-								<Button
-									variant={'ghost'}
-									onClick={() =>
-										setShowPassword((showPassword) => !showPassword)
-									}
-								>
-									{showPassword ? <ViewIcon /> : <ViewOffIcon />}
-								</Button>
-							</InputRightElement>
-						</InputGroup>
-					</FormControl>
-					<Stack spacing={5}>
-						<Stack
-							direction={{ base: 'column', sm: 'row' }}
-							align={'start'}
-							justify={'space-between'}
-						></Stack>
-						<Button
-							type="submit"
-							bg={'blue.400'}
-							color={'white'}
-							_hover={{
-								bg: 'blue.500'
-							}}
-						>
-							Sign in
-						</Button>
-					</Stack>
-				</Stack>
-			</AuthHeading>
-		</chakra.form>
+			<chakra.form onSubmit={handleLogIn}>
+				<Box bg={useColorModeValue('gray.100', 'gray.800')}>
+					<Container
+						// bg={useColorModeValue('gray.100', 'gray.800')}
+						maxW="container.xl"
+						centerContent
+					>
+						<AuthHeading>
+							<Stack spacing={4}>
+								<FormControl id="email">
+									<FormLabel>Email address</FormLabel>
+									<Input
+										onChange={(e) => setEmail(e.target.value)}
+										name="email"
+										type="email"
+										autoComplete="email"
+										required
+									/>
+								</FormControl>
+								<FormControl id="password">
+									<FormLabel>Password</FormLabel>
+									<InputGroup>
+										<Input
+											onChange={(e) => setPassword(e.target.value)}
+											type={showPassword ? 'text' : 'password'}
+											autoComplete="current-password"
+											required
+										/>
+										<InputRightElement h={'full'}>
+											<Button
+												variant={'ghost'}
+												onClick={() =>
+													setShowPassword((showPassword) => !showPassword)
+												}
+											>
+												{showPassword ? <ViewIcon /> : <ViewOffIcon />}
+											</Button>
+										</InputRightElement>
+									</InputGroup>
+								</FormControl>
+								<Stack spacing={5}>
+									<Stack
+										direction={{ base: 'column', sm: 'row' }}
+										align={'start'}
+										justify={'space-between'}
+									></Stack>
+									<Button
+										type="submit"
+										bg={'blue.400'}
+										color={'white'}
+										_hover={{
+											bg: 'blue.500'
+										}}
+									>
+										Sign in
+									</Button>
+								</Stack>
+							</Stack>
+						</AuthHeading>
+					</Container>
+				</Box>
+			</chakra.form>
+		</>
 	);
 }
 

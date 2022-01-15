@@ -11,7 +11,8 @@ import {
 	chakra,
 	InputGroup,
 	HStack,
-	InputRightElement
+	InputRightElement,
+	useColorModeValue
 } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import AuthHeading from '../components/AuthHeading';
@@ -38,72 +39,74 @@ function RegisterPage() {
 	return (
 		<chakra.form onSubmit={handleSignUp}>
 			<Navbar />
-			<AuthHeading>
-				<Stack spacing={4}>
-					<HStack>
-						<Box>
-							<FormControl id="firstName" isRequired>
-								<FormLabel>First Name</FormLabel>
+			<Box bg={useColorModeValue('gray.100', 'gray.800')}>
+				<AuthHeading>
+					<Stack spacing={4}>
+						<HStack>
+							<Box>
+								<FormControl id="firstName" isRequired>
+									<FormLabel>First Name</FormLabel>
+									<Input
+										onChange={(e) => setFirstName(e.target.value)}
+										type="text"
+									/>
+								</FormControl>
+							</Box>
+							<Box>
+								<FormControl id="lastName">
+									<FormLabel>Last Name</FormLabel>
+									<Input
+										onChange={(e) => setLastName(e.target.value)}
+										type="text"
+									/>
+								</FormControl>
+							</Box>
+						</HStack>
+						<FormControl id="email" isRequired>
+							<FormLabel>Email address</FormLabel>
+							<Input onChange={(e) => setEmail(e.target.value)} type="email" />
+						</FormControl>
+						<FormControl id="password" isRequired>
+							<FormLabel>Password</FormLabel>
+							<InputGroup>
 								<Input
-									onChange={(e) => setFirstName(e.target.value)}
-									type="text"
+									onChange={(e) => setPassword(e.target.value)}
+									type={showPassword ? 'text' : 'password'}
 								/>
-							</FormControl>
-						</Box>
-						<Box>
-							<FormControl id="lastName">
-								<FormLabel>Last Name</FormLabel>
-								<Input
-									onChange={(e) => setLastName(e.target.value)}
-									type="text"
-								/>
-							</FormControl>
-						</Box>
-					</HStack>
-					<FormControl id="email" isRequired>
-						<FormLabel>Email address</FormLabel>
-						<Input onChange={(e) => setEmail(e.target.value)} type="email" />
-					</FormControl>
-					<FormControl id="password" isRequired>
-						<FormLabel>Password</FormLabel>
-						<InputGroup>
-							<Input
-								onChange={(e) => setPassword(e.target.value)}
-								type={showPassword ? 'text' : 'password'}
-							/>
-							<InputRightElement h={'full'}>
-								<Button
-									variant={'ghost'}
-									onClick={() =>
-										setShowPassword((showPassword) => !showPassword)
-									}
-								>
-									{showPassword ? <ViewIcon /> : <ViewOffIcon />}
-								</Button>
-							</InputRightElement>
-						</InputGroup>
-					</FormControl>
-					<Stack spacing={10} pt={2}>
-						<Button
-							type="submit"
-							loadingText="Submitting"
-							size="lg"
-							bg={'blue.400'}
-							color={'white'}
-							_hover={{
-								bg: 'blue.500'
-							}}
-						>
-							Sign up
-						</Button>
+								<InputRightElement h={'full'}>
+									<Button
+										variant={'ghost'}
+										onClick={() =>
+											setShowPassword((showPassword) => !showPassword)
+										}
+									>
+										{showPassword ? <ViewIcon /> : <ViewOffIcon />}
+									</Button>
+								</InputRightElement>
+							</InputGroup>
+						</FormControl>
+						<Stack spacing={10} pt={2}>
+							<Button
+								type="submit"
+								loadingText="Submitting"
+								size="lg"
+								bg={'blue.400'}
+								color={'white'}
+								_hover={{
+									bg: 'blue.500'
+								}}
+							>
+								Sign up
+							</Button>
+						</Stack>
+						<Stack pt={6}>
+							<Text align={'center'}>
+								Already a user? <Link to="/">Login</Link>
+							</Text>
+						</Stack>
 					</Stack>
-					<Stack pt={6}>
-						<Text align={'center'}>
-							Already a user? <Link to="/">Login</Link>
-						</Text>
-					</Stack>
-				</Stack>
-			</AuthHeading>
+				</AuthHeading>
+			</Box>
 		</chakra.form>
 	);
 }

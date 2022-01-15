@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { Text, Container } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 import {
 	Routes,
 	Route,

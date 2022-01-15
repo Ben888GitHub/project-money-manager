@@ -34,13 +34,8 @@ function AuthHeading({ children }) {
 	};
 
 	return (
-		<Container maxW="container.xl" centerContent>
-			<Flex
-				minH={'70vh'}
-				align={'center'}
-				justify={'center'}
-				bg={useColorModeValue('gray.50', 'gray.800')}
-			>
+		<>
+			<Flex minH={'95vh'} align={'center'} justify={'center'}>
 				<Stack
 					spacing={8}
 					mx={'auto'}
@@ -108,7 +103,7 @@ function AuthHeading({ children }) {
 					</Box>
 				</Stack>
 			</Flex>
-		</Container>
+		</>
 	);
 }
 
