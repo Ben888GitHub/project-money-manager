@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Money Manager Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Money Manager App made with React, ChakraUI, & Firebase
 
-## Available Scripts
+## Overview
 
 In the project directory, you can run:
 
