@@ -40,6 +40,7 @@ function AuthHeading({ children }) {
 					spacing={8}
 					mx={'auto'}
 					maxW={'lg'}
+					// w={'sm'}
 					py={12}
 					px={{ lg: 6, md: 6, sm: 6 }}
 				>
@@ -55,7 +56,7 @@ function AuthHeading({ children }) {
 							</>
 						) : (
 							<>
-								<Heading fontSize={'4xl'}>Sign in to continue</Heading>
+								<Heading fontSize={'4xl'}>Sign in to your account</Heading>
 								<Text fontSize={'lg'} color={'gray.600'}>
 									Don't have an account? <Link to="/signup">Sign up</Link>
 								</Text>

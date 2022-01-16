@@ -44,7 +44,7 @@ function LoginPage() {
 				<Box bg={useColorModeValue('gray.100', 'gray.800')}>
 					<Container
 						// bg={useColorModeValue('gray.100', 'gray.800')}
-						maxW="container.xl"
+						// maxW="container.xl"
 						centerContent
 					>
 						<AuthHeading>
