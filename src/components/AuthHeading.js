@@ -55,7 +55,7 @@ function AuthHeading({ children }) {
 							</>
 						) : (
 							<>
-								<Heading fontSize={'4xl'}>Sign in to your account</Heading>
+								<Heading fontSize={'4xl'}>Sign in to continue</Heading>
 								<Text fontSize={'lg'} color={'gray.600'}>
 									Don't have an account? <Link to="/signup">Sign up</Link>
 								</Text>
