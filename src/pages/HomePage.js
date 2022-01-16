@@ -14,7 +14,7 @@ import TransactionsList from '../components/TransactionsList';
 import Details from '../components/Details';
 function HomePage() {
 	return (
-		<>
+		<Box m={0} p={0} overflowX="hidden">
 			<Navbar />
 			<Box bg={useColorModeValue('gray.100', 'gray.800')}>
 				<Container maxW="container.xl" centerContent>
@@ -47,7 +47,7 @@ function HomePage() {
 						<Stack
 							direction={{
 								lg: 'row',
-								md: 'row',
+								md: 'column',
 								sm: 'column',
 								base: 'column'
 							}}
@@ -77,7 +77,7 @@ function HomePage() {
 					</Flex>
 				</Container>
 			</Box>
-		</>
+		</Box>
 	);
 }
 
