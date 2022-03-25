@@ -43,6 +43,7 @@ function HomePage() {
 						justify={'center'}
 						// bg={useColorModeValue('gray.100', 'gray.800')}
 						// delete this
+						// Edit directly on CodeSandbox
 						pb={10}
 					>
 						<Stack
