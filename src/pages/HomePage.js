@@ -42,6 +42,7 @@ function HomePage() {
 						align={'center'}
 						justify={'center'}
 						// bg={useColorModeValue('gray.100', 'gray.800')}
+						// delete this
 						pb={10}
 					>
 						<Stack
