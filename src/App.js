@@ -35,7 +35,7 @@ function App() {
 		</FirebaseContextProvider>
 	);
 }
-
+// trying to open source with GitHub CLI
 function ProtectedRoute({ children }) {
 	const { isAuth } = useFirebase();
 	let navigate = useNavigate();
